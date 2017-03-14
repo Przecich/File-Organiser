@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d12f183-aa50-4091-8c24-add4b0c36ce8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/File Organiser/App$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/File Organiser/App.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/File Organiser/AppGUI$GuiListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/File Organiser/AppGUI.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/File Organiser/ExtensionMapperFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/File Organiser/FileNamesUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/File Organiser/FileOperations.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/File Organiser/Folders.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/File Organiser/MovingFilesTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/App.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppGUI.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ExtensionMapperFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FileNamesUtils.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FileOperations.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Folders.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/MovingFilesTask.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/File Organiser.iml" afterPath="$PROJECT_DIR$/File Organiser.iml" />
-    </list>
+    <list default="true" id="7d12f183-aa50-4091-8c24-add4b0c36ce8" name="Default" comment="" />
     <ignored path="File Organiser.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
