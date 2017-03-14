@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 
 public class FileOperations {
+
+
     private Path sourcePath;
     private Path targetPath;
     private String folderName = "OrganisedFiles";
@@ -28,7 +30,8 @@ public class FileOperations {
 
         try {
             DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(sourcePath.toString()));
-            createFolder();
+            //createFolder();
+            System.out.println(targetPath);
             for (Path path : directoryStream) {
 
                 if (!isSameAsFolderName(path)) {
@@ -39,6 +42,9 @@ public class FileOperations {
             /*DEBBUGING
             TODO ADDAXCEPTION HANDLING
             \*/
+            System.out.println(e.getCause());
+            System.out.println(e.getLocalizedMessage());
+            System.out.println(e.getMessage());
         }
 
     }
@@ -62,7 +68,14 @@ public class FileOperations {
         createFolder(targetPath, extension);
         return Paths.get(targetPath + "\\" + extension + "\\" + path.getFileName());
     }
-    //TODO something like , separate thing for image(date and separate for not image
 
+    public void setSourcePath(Path path) {
+        this.sourcePath=path;
+    }
+
+    public void setTargetPath(Path path) {
+        this.targetPath=Paths.get(path.toString() + "\\" + folderName);
+
+    }
 
 }

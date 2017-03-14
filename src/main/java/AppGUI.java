@@ -1,33 +1,65 @@
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.nio.file.Paths;
 
 public class AppGUI {
     JPanel pane;
-    JButton confirmButton;
-    JTextField sourcePathFiled;
+    JButton confirmButton,targetButton;
+    JTextField sourcePathFiled,targetPathField;
     JProgressBar progressBar;
+    JRadioButton radioButton ;
     JFileChooser fc = new JFileChooser();
+    JFileChooser fc2 = new JFileChooser();
     FileOperations fileOperations;
 
-    public class GuiListener implements ActionListener {
+
+    private class GuiListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
             if (e.getActionCommand().equals("Source")) {
                 int returnVal = fc.showOpenDialog(pane);
 
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
                     File file = fc.getSelectedFile();
-                    fileOperations = new FileOperations(file.toPath());
                     sourcePathFiled.setText(file.toPath().toString());
                     confirmButton.setEnabled(true);
                 }
             }
+            if (e.getActionCommand().equals("Target")) {
+                int returnVal = fc2.showOpenDialog(pane);
+
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    File file = fc2.getSelectedFile();
+
+                    targetPathField.setText(file.toPath().toString());
+                    confirmButton.setEnabled(true);
+                }
+            }
+
+            if(e.getActionCommand().equals("change")){
+                if(radioButton.isSelected()) {
+                    targetPathField.setEditable(true);
+                    targetButton.setEnabled(true);
+
+                }
+                else {
+                    targetPathField.setEditable(false);
+                    targetButton.setEnabled(false);
+                }
+
+            }
+
 
             if (e.getActionCommand().equals("Organise")) {
+                fileOperations=new FileOperations(Paths.get(sourcePathFiled.getText()));
+                System.out.println(targetPathField.getText());
+                if(radioButton.isSelected())
+                    fileOperations.setTargetPath(Paths.get(targetPathField.getText()));
+
                 progressBar.setIndeterminate(true);
                 progressBar.setVisible(true);
 
@@ -46,24 +78,26 @@ public class AppGUI {
     }
 
     public AppGUI() {
-        initSwingComponents();
+        createSwingComponents();
     }
-
     public void createAndShowGUI() {
 
         JFrame frame = new JFrame("File Organiser");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(600, 200));
-
         frame.add(pane);
-
-
         frame.pack();
         frame.setVisible(true);
     }
-    private void initSwingComponents(){
+    private void createSwingComponents(){
+
+
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fc2.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        TitledBorder title;
+        title = BorderFactory.createTitledBorder("Directories");
         pane = new JPanel();
+        pane.setBorder(title);
         JButton button;
         pane.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -104,7 +138,9 @@ public class AppGUI {
         c.weighty = 0;
         pane.add(label2, c);
 
-        JRadioButton radioButton = new JRadioButton();
+        radioButton= new JRadioButton();
+        radioButton.setActionCommand("change");
+        radioButton.addActionListener(new GuiListener());
         c.weightx = 1;
 
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -112,24 +148,26 @@ public class AppGUI {
         c.gridy = 3;
         pane.add(radioButton, c);
 
-        JTextField textField2 = new JTextField();
-        textField2.setEnabled(false);
+        targetPathField = new JTextField();
+        targetPathField.setEnabled(false);
+        targetPathField.setEditable(false);
 
         c.weightx = 10;
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 3;
-        pane.add(textField2, c);
+        pane.add(targetPathField, c);
 
 
-        button = new JButton("Target");
-        button.setEnabled(false);
+        targetButton = new JButton("Target");
+        targetButton.addActionListener(new GuiListener());
+        targetButton.setEnabled(false);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
         c.gridx = 2;
         c.gridy = 3;
-        pane.add(button, c);
+        pane.add(targetButton, c);
 
 
         progressBar = new JProgressBar();
@@ -154,6 +192,9 @@ public class AppGUI {
 
         c.gridy = 5;       //third row
         pane.add(confirmButton, c);
+
+    }
+    private void initComponents(){
 
     }
 
