@@ -5,6 +5,6 @@ File Organiser alows you to pack your files into neat folders based on their cat
 
 ## Instalation
 1. You need to have [JRE](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)
-2. Download `file-organiser.jar`
+2. Download `File Organiser0.5.jar`
 
 ## Usage
